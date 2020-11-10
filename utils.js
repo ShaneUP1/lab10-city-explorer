@@ -11,7 +11,7 @@ function mungeLocation(location) {
 function mungeWeather(location) {
     return location.data.map(item => {
         return {
-            forecast: item.location.description,
+            forecast: item.weather.description,
             time: item.datetime
         };
     }).slice(0, 8);
