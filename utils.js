@@ -42,7 +42,7 @@ function mungeReviews(location) {
             rating: item.rating,
             url: item.url
         };
-    }).slice(0, 10);
+    }).slice(0, 20);
 }
 
 module.exports = {

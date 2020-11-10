@@ -1,11 +1,10 @@
 require('dotenv').config();
-const { mungeLocation, mungeWeather, mungeTrails } = require('../utils.js');
+const { mungeLocation, mungeWeather, mungeTrails, mungeReviews } = require('../utils.js');
 const hikingRaw = require('../data/hikingRaw.js');
 const hikingMunged = require('../data/hikingMunged.js');
-const { execSync } = require('child_process');
-const fakeRequest = require('supertest');
-const app = require('../lib/app');
-const client = require('../lib/client');
+const reviewsRaw = require('../data/reviewsRaw.json');
+const reviewsMunged = require('../data/reviewsMunged.json');
+
 
 describe('app routes', () => {
   describe('routes', () => {
@@ -66,7 +65,7 @@ describe('app routes', () => {
     });
   });
 
-  test.only('returns trail in modified format', () => {
+  test('returns trail in modified format', () => {
 
     const oldTrail = hikingRaw;
 
@@ -76,6 +75,18 @@ describe('app routes', () => {
     const result = mungeTrails(oldTrail);
     expect(result).toEqual(expectation);
   });
+});
+
+test.only('returns reviews in modified format', () => {
+
+  // const oldReview = reviewsRaw;
+
+  const expectation = reviewsMunged;
+
+
+  const result = mungeReviews(reviewsRaw);
+
+  expect(result).toEqual(expect.arrayContaining(expectation));
 });
 
 
