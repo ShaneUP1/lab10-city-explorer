@@ -1,4 +1,4 @@
-[
+module.exports = [
     {
         'name': 'Bull of the Woods Lookout',
         'location': 'Mill City, Oregon',

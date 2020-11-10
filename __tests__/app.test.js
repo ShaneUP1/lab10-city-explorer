@@ -1,7 +1,7 @@
 require('dotenv').config();
 const { mungeLocation, mungeWeather, mungeTrails } = require('../utils.js');
-const { hikingRaw } = require('../data/hikingRaw.js');
-const { hikingNew } = require('../data/hikingNew.js');
+const hikingRaw = require('../data/hikingRaw.js');
+const hikingMunged = require('../data/hikingMunged.js');
 const { execSync } = require('child_process');
 const fakeRequest = require('supertest');
 const app = require('../lib/app');
@@ -70,7 +70,7 @@ describe('app routes', () => {
 
     const oldTrail = hikingRaw;
 
-    const expectation = hikingNew;
+    const expectation = hikingMunged;
 
 
     const result = mungeTrails(oldTrail);
