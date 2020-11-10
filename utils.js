@@ -9,12 +9,12 @@ function mungeLocation(location) {
 }
 
 function mungeWeather(location) {
-    location.date.map(item => {
+    return location.data.map(item => {
         return {
-            forecast: item.weather.description,
+            forecast: item.location.description,
             time: item.datetime
-        }
-    })
+        };
+    }).slice(0, 8);
 }
 
 module.exports = {
