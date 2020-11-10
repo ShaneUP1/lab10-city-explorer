@@ -8,6 +8,16 @@ function mungeLocation(location) {
     }
 }
 
+function mungeWeather(location) {
+    location.date.map(item => {
+        return {
+            forecast: item.weather.description,
+            time: item.datetime
+        }
+    })
+}
+
 module.exports = {
-    mungeLocation
+    mungeLocation,
+    mungeWeather
 };
